@@ -23,3 +23,4 @@ Cần kết nối mạng để tải phông Be Vietnam Pro và Newsreader từ G
 - Toàn bộ dữ liệu nằm trong bộ nhớ, tải lại trang là về trạng thái ban đầu. Chưa có backend.
 - Bộ lọc an toàn (`safetyHit` trong `data.js`) chỉ là danh sách từ khóa để minh họa.
 - Số 115 và 113 trong màn hình hỗ trợ là nội dung mẫu, cần được xác minh trước khi phát hành.
+# moodi_mobile_app
