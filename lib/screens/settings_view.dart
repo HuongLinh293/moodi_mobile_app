@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import '../core/theme/colors.dart';
 import '../core/theme/motion.dart';
+import '../core/theme/shadows.dart';
 import '../core/theme/typography.dart';
 import '../state/mindra_state.dart';
 import 'onboarding_view.dart';
@@ -553,7 +554,7 @@ class SettingsView extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xFFFFF7ED),
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: AppColors.orange.withValues(alpha: 0.3)),
+        boxShadow: AppShadows.card,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -813,7 +814,7 @@ class SettingsView extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cream,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: AppColors.line),
+        boxShadow: AppShadows.card,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

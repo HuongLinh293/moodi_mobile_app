@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 import '../core/theme/colors.dart';
 import '../core/theme/motion.dart';
+import '../core/theme/shadows.dart';
 import '../core/theme/typography.dart';
 import '../models/emotion.dart';
 import '../models/micro_goal.dart';
@@ -106,6 +107,7 @@ class TodayView extends StatelessWidget {
             decoration: BoxDecoration(
               color: toneColor,
               borderRadius: BorderRadius.circular(24),
+              boxShadow: AppShadows.card,
             ),
             child: LayoutBuilder(
               builder: (context, constraints) {
@@ -133,14 +135,6 @@ class TodayView extends StatelessWidget {
                 final copyColumn = Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      '01 / CHECK-IN',
-                      style: AppTypography.kicker.copyWith(
-                        fontSize: 12,
-                        color: contentTextColor.withValues(alpha: 0.7),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
                     Text(
                       'BÂY GIỜ BẠN ĐANG',
                       style: AppTypography.kicker.copyWith(
@@ -312,21 +306,36 @@ class TodayView extends StatelessWidget {
                       alignment: WrapAlignment.end,
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        TextButton.icon(
-                          onPressed: onOpenPause,
-                          style: TextButton.styleFrom(
-                            foregroundColor: contentTextColor,
-                            minimumSize: const Size(44, 44),
-                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: isDarkTone
+                                ? Colors.white.withValues(alpha: 0.16)
+                                : AppColors.ink.withValues(alpha: 0.08),
+                            borderRadius: BorderRadius.circular(999),
                           ),
-                          icon: const Icon(
-                            Icons.pause_circle_outline_rounded,
-                            size: 16,
-                          ),
-                          label: Text(
-                            'Pause Mode (30s)',
-                            style: AppTypography.button.copyWith(
-                              color: contentTextColor,
+                          child: TextButton.icon(
+                            onPressed: onOpenPause,
+                            style: TextButton.styleFrom(
+                              foregroundColor: contentTextColor,
+                              minimumSize: const Size(44, 44),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 14,
+                                vertical: 8,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(999),
+                              ),
+                            ),
+                            icon: const Icon(
+                              Icons.pause_circle_outline_rounded,
+                              size: 16,
+                            ),
+                            label: Text(
+                              'Pause Mode (30s)',
+                              style: AppTypography.button.copyWith(
+                                color: contentTextColor,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),
@@ -432,14 +441,6 @@ class TodayView extends StatelessWidget {
                               ),
                           ],
                         ),
-                        const SizedBox(height: 4),
-                        Text(
-                          '${selectedEmotion.vi} đã chọn',
-                          style: AppTypography.kicker.copyWith(
-                            fontSize: 12,
-                            color: contentTextColor.withValues(alpha: 0.75),
-                          ),
-                        ),
                       ],
                     ),
                   ],
@@ -454,7 +455,8 @@ class TodayView extends StatelessWidget {
             padding: const EdgeInsets.all(18),
             decoration: BoxDecoration(
               color: AppColors.blue,
-              borderRadius: BorderRadius.circular(22),
+              borderRadius: BorderRadius.circular(24),
+              boxShadow: AppShadows.card,
             ),
             child: LayoutBuilder(
               builder: (context, constraints) {
@@ -601,7 +603,8 @@ class TodayView extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: AppColors.blue,
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: AppShadows.card,
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -609,7 +612,7 @@ class TodayView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'KHU VƯỜN MINDRA',
+                'MOODI GARDEN',
                 style: AppTypography.kicker.copyWith(
                   color: Colors.white.withValues(alpha: 0.86),
                 ),
@@ -676,8 +679,8 @@ class TodayView extends StatelessWidget {
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: AppColors.cream,
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: AppColors.line),
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: AppShadows.card,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

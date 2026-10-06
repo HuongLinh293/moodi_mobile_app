@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../core/theme/colors.dart';
+import '../core/theme/shadows.dart';
 import '../core/theme/typography.dart';
 import '../models/ai_reflection.dart';
 import '../models/journal_entry.dart';
@@ -747,8 +748,8 @@ class _AIReflectionViewState extends State<AIReflectionView>
               padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
                 color: AppColors.cream,
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: AppColors.line),
+                borderRadius: BorderRadius.circular(22),
+                boxShadow: AppShadows.card,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -808,10 +809,8 @@ class _AIReflectionViewState extends State<AIReflectionView>
               padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
                 color: AppColors.mint.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: AppColors.mint.withValues(alpha: 0.4),
-                ),
+                borderRadius: BorderRadius.circular(22),
+                boxShadow: AppShadows.card,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -848,10 +847,8 @@ class _AIReflectionViewState extends State<AIReflectionView>
               padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
                 color: AppColors.blue.withValues(alpha: 0.08),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: AppColors.blue.withValues(alpha: 0.3),
-                ),
+                borderRadius: BorderRadius.circular(22),
+                boxShadow: AppShadows.card,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -935,14 +932,7 @@ class _AIReflectionViewState extends State<AIReflectionView>
                 decoration: BoxDecoration(
                   color: AppColors.cream,
                   borderRadius: BorderRadius.circular(22),
-                  border: Border.all(color: AppColors.line),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.ink.withValues(alpha: 0.04),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
+                  boxShadow: AppShadows.card,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1021,9 +1011,9 @@ class _AIReflectionViewState extends State<AIReflectionView>
               Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  color: AppColors.paper,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: AppColors.line),
+                  color: AppColors.cream,
+                  borderRadius: BorderRadius.circular(22),
+                  boxShadow: AppShadows.card,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 import '../core/theme/colors.dart';
 import '../core/theme/motion.dart';
+import '../core/theme/shadows.dart';
 import '../core/theme/typography.dart';
 import '../models/emotion.dart';
 import '../models/journal_entry.dart';
@@ -560,9 +561,8 @@ class _JournalViewState extends State<JournalView> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.7),
+        color: AppColors.creamDark,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.line.withValues(alpha: 0.8)),
       ),
       child: Row(
         children: [
@@ -651,16 +651,9 @@ class _JournalViewState extends State<JournalView> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.cream,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.line),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.ink.withValues(alpha: 0.03),
-            blurRadius: 16,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        boxShadow: AppShadows.card,
       ),
       child: Column(
         children: [
@@ -944,9 +937,9 @@ class _JournalViewState extends State<JournalView> {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: AppColors.line),
+              color: AppColors.cream,
+              borderRadius: BorderRadius.circular(22),
+              boxShadow: AppShadows.card,
             ),
             child: Column(
               children: [
@@ -1024,16 +1017,9 @@ class _JournalViewState extends State<JournalView> {
               return Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.cream,
                   borderRadius: BorderRadius.circular(22),
-                  border: Border.all(color: AppColors.line),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.ink.withValues(alpha: 0.02),
-                      blurRadius: 10,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
+                  boxShadow: AppShadows.card,
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1509,9 +1495,9 @@ class _JournalViewState extends State<JournalView> {
             width: double.infinity,
             padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.cream,
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: AppColors.line),
+              boxShadow: AppShadows.card,
             ),
             child: Center(
               child: Text(
@@ -1535,9 +1521,9 @@ class _JournalViewState extends State<JournalView> {
               return Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.cream,
                   borderRadius: BorderRadius.circular(22),
-                  border: Border.all(color: AppColors.line),
+                  boxShadow: AppShadows.card,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

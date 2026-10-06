@@ -52,7 +52,7 @@ class _MindraAppState extends State<MindraApp> {
           }
 
           return MaterialApp(
-            title: 'Mindra',
+            title: 'Moodi',
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
             home: home,

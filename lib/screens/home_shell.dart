@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import '../core/theme/colors.dart';
 import '../core/theme/motion.dart';
+import '../core/theme/shadows.dart';
 import '../core/theme/typography.dart';
 import '../state/mindra_state.dart';
 import 'today_view.dart';
@@ -33,7 +35,7 @@ class _HomeShellState extends State<HomeShell> {
       appBar: PreferredSize(
         // PreferredSize must include the status-bar inset because the custom
         // app bar also uses SafeArea internally.
-        preferredSize: Size.fromHeight(58 + MediaQuery.paddingOf(context).top),
+        preferredSize: Size.fromHeight(80 + MediaQuery.paddingOf(context).top),
         child: _buildFlexibleAppBar(context, state, currentTab, motion),
       ),
       body: AnimatedSwitcher(
@@ -55,64 +57,59 @@ class _HomeShellState extends State<HomeShell> {
     int currentTab,
     MindraMotion motion,
   ) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.paper.withValues(alpha: 0.95),
-        border: Border(
-          bottom: BorderSide(color: AppColors.ink.withValues(alpha: 0.08)),
-        ),
-      ),
-      child: SafeArea(
-        bottom: false,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14),
-          child: AnimatedSwitcher(
-            duration: motion.duration,
-            child: KeyedSubtree(
-              key: ValueKey<int>(currentTab),
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  final isCompact = constraints.maxWidth < 380;
-                  return SizedBox(
-                    height: 58,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              alignment: Alignment.centerLeft,
-                              child: _buildAppBarLeading(
-                                context,
-                                state,
-                                currentTab,
-                                isCompact,
-                              ),
+    return SafeArea(
+      bottom: false,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(14, 8, 14, 8),
+        child: AnimatedSwitcher(
+          duration: motion.duration,
+          child: KeyedSubtree(
+            key: ValueKey<int>(currentTab),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final isCompact = constraints.maxWidth < 380;
+                return SizedBox(
+                  height: 64,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        flex: 0,
+                        child: _cornerChip(
+                          padding: currentTab == 0
+                              ? const EdgeInsets.symmetric(horizontal: 16)
+                              : const EdgeInsets.symmetric(horizontal: 14),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: _buildAppBarLeading(
+                              context,
+                              state,
+                              currentTab,
+                              isCompact,
                             ),
                           ),
                         ),
-                        Flexible(
-                          child: Align(
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
                             alignment: Alignment.centerRight,
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              alignment: Alignment.centerRight,
-                              child: _buildAppBarTrailing(
-                                context,
-                                state,
-                                currentTab,
-                                isCompact,
-                              ),
+                            child: _buildAppBarTrailing(
+                              context,
+                              state,
+                              currentTab,
+                              isCompact,
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ),
         ),
@@ -137,13 +134,17 @@ class _HomeShellState extends State<HomeShell> {
               letterSpacing: -1.2,
             ),
             children: [
-              const TextSpan(text: 'mind'),
+              const TextSpan(text: 'm'),
               TextSpan(
-                text: 'r',
-                style: TextStyle(color: AppColors.orange),
+                text: 'oo',
+                style: TextStyle(
+                  color: AppColors.orange,
+                  fontStyle: FontStyle.italic,
+                ),
               ),
+              const TextSpan(text: 'd'),
               TextSpan(
-                text: 'a',
+                text: 'i',
                 style: TextStyle(
                   color: AppColors.blue,
                   fontStyle: FontStyle.italic,
@@ -262,18 +263,10 @@ class _HomeShellState extends State<HomeShell> {
         if (currentTab == 0)
           Semantics(
             label: 'Chuỗi hiện diện: ${state.consecutiveWeeks} tuần',
-            child: Container(
-              margin: EdgeInsets.only(right: isCompact ? 6 : 10),
-              padding: EdgeInsets.symmetric(
-                horizontal: isCompact ? 7 : 9,
-                vertical: 5,
-              ),
-              decoration: BoxDecoration(
-                color: AppColors.creamDark,
-                borderRadius: BorderRadius.circular(14),
-                border: Border.all(color: AppColors.lineLight),
-              ),
-              child: Row(
+            child: Padding(
+              padding: EdgeInsets.only(right: isCompact ? 6 : 10),
+              child: _cornerChip(
+                child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text('🔥', style: TextStyle(fontSize: 12)),
@@ -288,21 +281,20 @@ class _HomeShellState extends State<HomeShell> {
                     ),
                   ),
                 ],
+                ),
               ),
             ),
           ),
 
         // Mục Tôi mở hồ sơ, cài đặt và thông tin.
-        Semantics(
-          button: true,
-          label: 'Tôi: hồ sơ và cài đặt',
-          child: InkWell(
-            onTap: () => _openProfileModal(context, state),
-            borderRadius: BorderRadius.circular(16),
-            child: Container(
-              height: 44,
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              alignment: Alignment.center,
+        _cornerChip(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Semantics(
+            button: true,
+            label: 'Tôi: hồ sơ và cài đặt',
+            child: InkWell(
+              onTap: () => _openProfileModal(context, state),
+              borderRadius: BorderRadius.circular(48),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -311,7 +303,7 @@ class _HomeShellState extends State<HomeShell> {
                     height: isCompact ? 28 : 32,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                      color: AppColors.ink,
+                      color: Color(0xFF292B25),
                     ),
                     alignment: Alignment.center,
                     child: Text(
@@ -326,8 +318,9 @@ class _HomeShellState extends State<HomeShell> {
                   Text(
                     'Tôi',
                     style: AppTypography.button.copyWith(
-                      fontSize: isCompact ? 11 : 12,
+                      fontSize: isCompact ? 11 : 13,
                       color: AppColors.ink,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ],
@@ -411,9 +404,9 @@ class _HomeShellState extends State<HomeShell> {
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.creamDark,
                     borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: AppColors.line),
+                    boxShadow: AppShadows.card,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -841,101 +834,117 @@ class _HomeShellState extends State<HomeShell> {
     MindraMotion motion,
   ) {
     final textScale = MediaQuery.textScalerOf(context).scale(9) / 9;
-    final navHeight = textScale > 1 ? 74 + 28 * (textScale - 1) : 72.0;
+    final navHeight = textScale > 1 ? 78 + 28 * (textScale - 1) : 78.0;
     final items = [
-      (icon: Icons.home_outlined, label: 'Hôm nay'),
-      (icon: Icons.menu_book_outlined, label: 'Nhật ký'),
+      (icon: CupertinoIcons.house, label: 'Hôm nay'),
+      (icon: CupertinoIcons.book, label: 'Nhật ký'),
       (icon: Icons.local_florist_outlined, label: 'Khu vườn'),
-      (icon: Icons.explore_outlined, label: 'Khám phá'),
+      (icon: CupertinoIcons.compass, label: 'Khám phá'),
     ];
 
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.cream.withValues(alpha: 0.96),
-        border: Border(
-          top: BorderSide(color: AppColors.ink.withValues(alpha: 0.1)),
-        ),
-        boxShadow: motion.reduced
-            ? const []
-            : [
-                BoxShadow(
-                  color: AppColors.ink.withValues(alpha: 0.06),
-                  offset: const Offset(0, -6),
-                  blurRadius: 20,
-                ),
-              ],
-      ),
-      child: SafeArea(
-        top: false,
-        child: SizedBox(
-          height: navHeight,
-          child: Row(
-            children: items.asMap().entries.map((entry) {
-              final index = entry.key;
-              final item = entry.value;
-              final isActive = currentTab == index;
+    return SafeArea(
+      top: false,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 6, 12, 8),
+        child: ColoredBox(
+          color: AppColors.paper,
+          child: SizedBox(
+            height: navHeight,
+            child: Row(
+              children: items.asMap().entries.map((entry) {
+                final index = entry.key;
+                final item = entry.value;
+                final isActive = currentTab == index;
 
-              return Expanded(
-                child: Semantics(
-                  button: true,
-                  selected: isActive,
-                  label: '${item.label}${isActive ? ', selected' : ''}',
-                  child: Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      onTap: () => state.setTab(index),
-                      borderRadius: BorderRadius.circular(14),
-                      child: AnimatedContainer(
-                        duration: motion.duration,
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 4,
-                          vertical: 6,
-                        ),
-                        decoration: BoxDecoration(
-                          color: isActive
-                              ? AppColors.yellow
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              item.icon,
-                              size: 20,
-                              color: isActive
-                                  ? AppColors.ink
-                                  : AppColors.textMuted,
-                            ),
-                            const SizedBox(height: 2),
-                            FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                item.label,
-                                maxLines: 1,
-                                textAlign: TextAlign.center,
-                                style: AppTypography.kicker.copyWith(
-                                  fontSize: 11,
-                                  letterSpacing: 0.1,
-                                  color: isActive
-                                      ? AppColors.ink
-                                      : AppColors.textMuted,
-                                  fontWeight: isActive
-                                      ? FontWeight.w800
-                                      : FontWeight.w600,
+                return Expanded(
+                  child: Semantics(
+                    button: true,
+                    selected: isActive,
+                    label: '${item.label}${isActive ? ', selected' : ''}',
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () => state.setTab(index),
+                        borderRadius: BorderRadius.circular(14),
+                        child: AnimatedContainer(
+                          duration: motion.duration,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 5,
+                            vertical: 7,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                item.icon,
+                                size: 24,
+                                shadows: isActive
+                                    ? const [
+                                        Shadow(
+                                          color: AppColors.orange,
+                                          offset: Offset(0.35, 0),
+                                        ),
+                                        Shadow(
+                                          color: AppColors.orange,
+                                          offset: Offset(-0.35, 0),
+                                        ),
+                                      ]
+                                    : null,
+                                color: isActive
+                                    ? AppColors.orange
+                                    : AppColors.textMuted,
+                              ),
+                              const SizedBox(height: 4),
+                              FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  item.label,
+                                  maxLines: 1,
+                                  textAlign: TextAlign.center,
+                                  style: AppTypography.kicker.copyWith(
+                                    fontSize: 11,
+                                    letterSpacing: 0,
+                                    color: isActive
+                                        ? AppColors.orange
+                                        : AppColors.textMuted,
+                                    fontWeight: isActive
+                                        ? FontWeight.w800
+                                        : FontWeight.w400,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
-            }).toList(),
+                );
+              }).toList(),
+            ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _cornerChip({
+    required Widget child,
+    EdgeInsetsGeometry padding = const EdgeInsets.symmetric(horizontal: 14),
+  }) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.72),
+        borderRadius: BorderRadius.circular(48),
+        boxShadow: AppShadows.chip,
+      ),
+      child: Container(
+        height: 52,
+        padding: padding,
+        child: Center(
+          widthFactor: 1.0,
+          child: child,
         ),
       ),
     );

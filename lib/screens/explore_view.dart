@@ -77,7 +77,6 @@ class _ExploreViewState extends State<ExploreView> {
       decoration: BoxDecoration(
         color: AppColors.creamDark,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.line),
       ),
       child: Row(
         children: sections.asMap().entries.map((entry) {

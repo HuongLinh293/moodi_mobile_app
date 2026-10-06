@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../core/theme/colors.dart';
+import '../core/theme/shadows.dart';
 import '../core/theme/typography.dart';
 import '../models/emotion.dart';
 import '../state/mindra_state.dart';
@@ -48,8 +49,8 @@ class WeekTrackerCard extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: AppColors.cream,
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: AppColors.line),
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: AppShadows.card,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

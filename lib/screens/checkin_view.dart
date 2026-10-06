@@ -442,9 +442,8 @@ class _CheckinViewState extends State<CheckinView> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.creamDark,
               borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: AppColors.line),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../core/theme/colors.dart';
 import '../core/theme/motion.dart';
+import '../core/theme/shadows.dart';
 import '../core/theme/typography.dart';
 import '../models/emotion.dart';
 import '../state/mindra_state.dart';
@@ -145,7 +146,7 @@ class ProgressView extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cream,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.line),
+        boxShadow: AppShadows.card,
       ),
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -240,9 +241,8 @@ class ProgressView extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.creamDark,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.lineLight),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -313,7 +313,6 @@ class ProgressView extends StatelessWidget {
             ],
           ),
           borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: AppColors.mint.withValues(alpha: 0.35)),
         ),
         padding: const EdgeInsets.all(20),
         child: Row(
@@ -387,7 +386,7 @@ class ProgressView extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cream,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.line),
+        boxShadow: AppShadows.card,
       ),
       child: Column(
         children: [
@@ -532,7 +531,7 @@ class ProgressView extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.cream,
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppColors.line),
+          boxShadow: AppShadows.card,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -654,9 +653,9 @@ class ProgressView extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.cream,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.line),
+        boxShadow: AppShadows.card,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -686,9 +685,8 @@ class ProgressView extends StatelessWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.cream,
+                  color: AppColors.creamDark,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: AppColors.line),
                 ),
                 child: Text(
                   'Trước: mức $beforeIntensity/5',
@@ -785,7 +783,7 @@ class ProgressView extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cream,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.line),
+        boxShadow: AppShadows.card,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -902,7 +900,7 @@ class ProgressView extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cream,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.line),
+        boxShadow: AppShadows.card,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../core/theme/colors.dart';
 import '../core/theme/motion.dart';
+import '../core/theme/shadows.dart';
 import '../core/theme/typography.dart';
 import '../state/mindra_state.dart';
 import 'practice_session.dart';
@@ -213,9 +214,9 @@ class _PracticeViewState extends State<PracticeView> {
             child: Container(
               padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.cream,
                 borderRadius: BorderRadius.circular(22),
-                border: Border.all(color: AppColors.line),
+                boxShadow: AppShadows.card,
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -61,7 +61,7 @@ void main() {
     expect(find.text('Khu vườn'), findsOneWidget);
     expect(find.text('Khám phá'), findsOneWidget);
     expect(find.text('Tôi'), findsOneWidget);
-    expect(find.text('KHU VƯỜN MINDRA'), findsOneWidget);
+    expect(find.text('MOODI GARDEN'), findsOneWidget);
     expect(find.text('Xem thêm cảm xúc'), findsNothing);
     expect(find.text('Pause Mode (30s)'), findsOneWidget);
 

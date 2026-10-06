@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../core/theme/colors.dart';
 import '../core/theme/motion.dart';
+import '../core/theme/shadows.dart';
 import '../core/theme/typography.dart';
 import '../models/emotion.dart';
 import '../models/journal_entry.dart';
@@ -99,7 +100,7 @@ class _PatternExplorerCardState extends State<PatternExplorerCard> {
       decoration: BoxDecoration(
         color: AppColors.cream,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.line),
+        boxShadow: AppShadows.card,
       ),
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -219,10 +220,12 @@ class _PatternExplorerCardState extends State<PatternExplorerCard> {
                       color: isSelected ? Colors.white : AppColors.ink,
                       fontSize: 11,
                     ),
+                    showCheckmark: false,
                     selectedColor: AppColors.ink,
-                    backgroundColor: AppColors.paper,
-                    side: BorderSide(
-                      color: isSelected ? AppColors.ink : AppColors.line,
+                    backgroundColor: AppColors.creamDark,
+                    side: BorderSide.none,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(48),
                     ),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 6,
@@ -250,21 +253,17 @@ class _PatternExplorerCardState extends State<PatternExplorerCard> {
                           .selection();
                       setState(() => _selectedDimension = dim);
                     },
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(48),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
+                        horizontal: 16,
                         vertical: 8,
                       ),
                       decoration: BoxDecoration(
                         color: isSelected
                             ? AppColors.purple.withValues(alpha: 0.14)
-                            : AppColors.paper,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: isSelected ? AppColors.purple : AppColors.line,
-                          width: isSelected ? 1.5 : 1,
-                        ),
+                            : AppColors.creamDark,
+                        borderRadius: BorderRadius.circular(48),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -315,9 +314,8 @@ class _PatternExplorerCardState extends State<PatternExplorerCard> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              color: AppColors.paper,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppColors.lineLight),
+              color: AppColors.creamDark,
+              borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -351,9 +349,8 @@ class _PatternExplorerCardState extends State<PatternExplorerCard> {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.paper,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.line),
+        color: AppColors.creamDark,
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         children: [
@@ -429,9 +426,8 @@ class _PatternExplorerCardState extends State<PatternExplorerCard> {
             margin: const EdgeInsets.only(bottom: 10),
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: AppColors.paper,
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: AppColors.lineLight),
+              color: AppColors.creamDark,
+              borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -555,9 +551,8 @@ class _PatternExplorerCardState extends State<PatternExplorerCard> {
             margin: const EdgeInsets.only(bottom: 8),
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
-              color: AppColors.paper,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.lineLight),
+              color: AppColors.creamDark,
+              borderRadius: BorderRadius.circular(20),
             ),
             child: Row(
               children: [
@@ -645,9 +640,8 @@ class _PatternExplorerCardState extends State<PatternExplorerCard> {
               child: Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppColors.paper,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppColors.lineLight),
+                  color: AppColors.creamDark,
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -685,9 +679,8 @@ class _PatternExplorerCardState extends State<PatternExplorerCard> {
               child: Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppColors.paper,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppColors.lineLight),
+                  color: AppColors.creamDark,
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
